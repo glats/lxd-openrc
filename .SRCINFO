@@ -1,0 +1,35 @@
+pkgbase = lxd-openrc
+	pkgdesc = REST API, command line tool and OpenStack integration plugin for LXC. (OpenRC support)
+	pkgver = 3.18
+	pkgrel = 1
+	url = https://github.com/lxc/lxd
+	arch = x86_64
+	license = APACHE
+	makedepends = go
+	makedepends = git
+	makedepends = tcl
+	makedepends = patchelf
+	depends = lxc
+	depends = lxcfs
+	depends = squashfs-tools
+	depends = dnsmasq
+	depends = libuv
+	depends = openrc
+	optdepends = lvm2: for lvm2 support
+	optdepends = thin-provisioning-tools: for thin provisioning support
+	optdepends = btrfs-progs: for btrfs storage driver support
+	optdepends = ceph: for ceph storage driver support
+	provides = lxd-openrc
+	conflicts = lxd-git
+	conflicts = lxd-lts
+	conflicts = lxd
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/lxc/lxd/releases/download/lxd-openrc-3.18/lxd-openrc-3.18.tar.gz
+	source = lxd
+	md5sums = 4acf701d5903c905b931d800bfbfc6a1
+	md5sums = 6462095d5892d15c4f14310aa263a2a9
+
+pkgname = lxd-openrc
+	install = lxd.install
+
