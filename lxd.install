@@ -5,4 +5,11 @@ post_install() {
     echo "LXD needs sub{u,g}ids for root, so that it can create unprivileged containers."
     echo "Execute the following to set the sub{u,g}ids:"
     echo "'echo \"root:1000000:65536\" | sudo tee -a /etc/subuid /etc/subgid'"
+    echo ""
+    echo "Running systemd based containers on OpenRC hosts"
+    echo ""
+    echo "Add the following line into the \"mount\" block"
+    echo "\"name=systemd\" = /sys/fs/cgroup/systemd;"
+    echo "Info: https://wiki.gentoo.org/wiki/LXD#Running_systemd_based_containers_on_OpenRC_hosts"
+    echo ""
 }

@@ -5,13 +5,13 @@ pkgname=lxd-openrc
 _pkgname=lxd
 pkgver=3.18
 pkgrel=1
-pkgdesc="REST API, command line tool and OpenStack integration plugin for LXC. (OpenRC support)"
+pkgdesc="Fast, dense, secure container hypervisor and a new user experience for LXC with OpenRC support"
 arch=('x86_64')
 url="https://github.com/lxc/lxd"
 license=('APACHE')
 conflicts=('lxd-git' 'lxd-lts' 'lxd')
 provides=('lxd')
-depends=('lxc' 'lxcfs' 'squashfs-tools' 'dnsmasq' 'libuv' 'openrc')
+depends=('lxc' 'lxcfs' 'squashfs-tools' 'dnsmasq' 'libuv' 'openrc' 'libcgroup-openrc')
 makedepends=('go' 'git' 'tcl' 'patchelf')
 optdepends=(
     'lvm2: for lvm2 support'
@@ -30,7 +30,7 @@ source=(
 )
 
 md5sums=('4acf701d5903c905b931d800bfbfc6a1'
-         '3491627524f04941a4b3a6de45a70503'
+         '8d463d636e7ef5fadcb0a11e7324f493'
          '9f39af2bcf31dccf356bdddc42b3e2ad')
 
 build() {
@@ -78,6 +78,9 @@ package() {
   # Bash completions
   install -p -m644 "${go_path}/src/${_lxd}/scripts/bash/lxd-client" \
     "${pkgdir}/usr/share/bash-completion/completions/lxd"
+
+  # support systemd based containers on OpenRC hosts
+  mkdir -p "${pkgdir}/sys/fs/cgroup/systemd"
 }
 
 # vim:set ts=2 sw=2 et:
